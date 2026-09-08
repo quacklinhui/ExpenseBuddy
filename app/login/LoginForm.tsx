@@ -40,11 +40,9 @@ export default function LoginForm() {
         setBusy(false);
         return;
       }
-      try {
-        await supabase.rpc("seed_demo_data");
-      } catch {
-        // Non-fatal: user can load sample data from the dashboard.
-      }
+      // New accounts start empty. The dashboard's "Load sample data" button
+      // seeds demo data on request, so the experience is the same whether or
+      // not email confirmation is enabled.
       router.replace(next);
       router.refresh();
       return;
